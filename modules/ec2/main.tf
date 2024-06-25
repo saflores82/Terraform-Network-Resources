@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2instance" {
-  subnet_id              = aws_subnet.my_subnet.id
+  subnet_id              = var.subnet
   ami                    = var.ami
   instance_type          = var.instance_type
   key_name               = var.key_name
@@ -20,7 +20,7 @@ resource "aws_instance" "ec2instance" {
 
 resource "aws_security_group" "my_securityGroup" {
   name   = "tf-securityGroup"
-  vpc_id = aws_vpc.my_vpc.id
+  vpc_id = var.myvpc
 
   ingress {
     from_port   = 80
